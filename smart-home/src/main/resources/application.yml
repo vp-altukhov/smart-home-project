@@ -1,0 +1,36 @@
+server:
+  port: 8087
+
+spring:
+  profiles:
+    active: bot-on
+    #active: bot-off
+  datasource:
+    url: jdbc:postgresql://localhost/smart-home
+    username: postgres
+    password: postgres
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    generate-ddl: false
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        hbm2dll:
+          create_namespaces: true
+        enable_lazy_load_no_trans: true
+  security:
+    user:
+      name: username
+      password: userpassword
+
+smart-home:
+  broadcast-port: 8761
+  token: telegram-boat-token
+  bot-username: boat-name
+  access-is-allowed:
+    - telegram-user-id
